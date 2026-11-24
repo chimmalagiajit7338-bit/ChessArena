@@ -1,0 +1,269 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #0b1120;
+  color: #f8fafc;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 25px 5%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.brand h1 {
+  font-size: 32px;
+  color: #60a5fa;
+}
+
+.brand-icon {
+  font-size: 35px;
+}
+
+.header p {
+  color: #94a3b8;
+  margin-top: 8px;
+  letter-spacing: 2px;
+}
+
+.dashboard {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.game-section {
+  background: #172235;
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid #27364d;
+}
+
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #202e43;
+  padding: 13px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.player-avatar {
+  width: 42px;
+  height: 42px;
+  background: #34465e;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+}
+
+.white-avatar {
+  background: #e2e8f0;
+  color: #111827;
+}
+
+.player-details {
+  flex: 1;
+}
+
+.player-details h3 {
+  font-size: 15px;
+}
+
+.player-details span {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.clock {
+  background: #0b1120;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock.active {
+  background: #1d4ed8;
+}
+
+.chessboard-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto 15px;
+}
+
+.game-status {
+  text-align: center;
+  padding: 15px;
+  color: #93c5fd;
+  font-weight: bold;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.game-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-actions button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.new-game-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.undo-btn {
+  background: #334155;
+  color: white;
+}
+
+.game-actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sidebar-card {
+  background: #172235;
+  border: 1px solid #27364d;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.sidebar-card h2 {
+  font-size: 18px;
+}
+
+.section-subtitle {
+  color: #94a3b8;
+  font-size: 12px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+}
+
+.overview-item,
+.captured-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #334155;
+  font-size: 13px;
+}
+
+.overview-item:last-child,
+.captured-row:last-child {
+  border-bottom: none;
+}
+
+.overview-item span,
+.captured-row span {
+  color: #94a3b8;
+}
+
+.captured-row strong {
+  font-size: 21px;
+}
+
+.history-header,
+.history-row {
+  display: grid;
+  grid-template-columns: 35px 1fr 1fr;
+  gap: 10px;
+  padding: 11px;
+  font-size: 13px;
+}
+
+.history-header {
+  background: #26364c;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.history-row:nth-child(even) {
+  background: #202e43;
+}
+
+.empty-history {
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.history-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+footer {
+  text-align: center;
+  margin-top: 35px;
+  padding: 20px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 750px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .app {
+    padding: 20px 12px;
+  }
+
+  .game-section {
+    padding: 12px;
+  }
+
+  .brand h1 {
+    font-size: 26px;
+  }
+}
