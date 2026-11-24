@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
@@ -11,7 +10,7 @@ function formatTime(seconds) {
   const remainingSeconds = seconds % 60;
 
   return `${String(minutes).padStart(2, "0")}:${String(
-    remainingSeconds
+    remainingSeconds,
   ).padStart(2, "0")}`;
 }
 
@@ -32,8 +31,7 @@ function App() {
   const moves = game.history({ verbose: true });
 
   // Check whether the game has finished
-  const gameFinished =
-    game.isGameOver() || whiteTime <= 0 || blackTime <= 0;
+  const gameFinished = game.isGameOver() || whiteTime <= 0 || blackTime <= 0;
 
   // Chess clock
   useEffect(() => {
@@ -127,18 +125,18 @@ function App() {
     whiteTime === 0
       ? "Time out! Black wins"
       : blackTime === 0
-      ? "Time out! White wins"
-      : game.isCheckmate()
-      ? `Checkmate! ${game.turn() === "w" ? "Black" : "White"} wins`
-      : game.isStalemate()
-      ? "Draw by stalemate"
-      : game.isDraw()
-      ? "Game drawn"
-      : game.isCheck()
-      ? "Check!"
-      : game.turn() === "w"
-      ? "White to move"
-      : "Black to move";
+        ? "Time out! White wins"
+        : game.isCheckmate()
+          ? `Checkmate! ${game.turn() === "w" ? "Black" : "White"} wins`
+          : game.isStalemate()
+            ? "Draw by stalemate"
+            : game.isDraw()
+              ? "Game drawn"
+              : game.isCheck()
+                ? "Check!"
+                : game.turn() === "w"
+                  ? "White to move"
+                  : "Black to move";
 
   return (
     <div className="app">
@@ -152,7 +150,6 @@ function App() {
 
       <main className="dashboard">
         <section className="game-section">
-
           {/* Black Player */}
           <div className="player-card">
             <div className="player-avatar">♚</div>
@@ -176,6 +173,18 @@ function App() {
                 position: game.fen(),
                 onPieceDrop,
                 boardOrientation: "white",
+                darkSquareStyle: {
+                  backgroundColor: "#779556",
+                },
+                lightSquareStyle: {
+                  backgroundColor: "#ebecd0",
+                },
+                boardStyle: {
+                  borderRadius: "8px",
+                  boxShadow: "0 8px 25px rgba(0, 0, 0, 0.4)",
+                },
+
+                showNotation: true,
               }}
             />
           </div>
@@ -204,10 +213,7 @@ function App() {
 
           {/* Game Actions */}
           <div className="game-actions">
-            <button
-              onClick={resetGame}
-              className="new-game-btn"
-            >
+            <button onClick={resetGame} className="new-game-btn">
               + New Game
             </button>
 
@@ -223,13 +229,10 @@ function App() {
 
         {/* Sidebar */}
         <aside className="sidebar">
-
           {/* Game Overview */}
           <div className="sidebar-card">
             <h2>Game Overview</h2>
-            <p className="section-subtitle">
-              Your match information
-            </p>
+            <p className="section-subtitle">Your match information</p>
 
             <div className="overview-item">
               <span>Game mode</span>
@@ -243,9 +246,7 @@ function App() {
 
             <div className="overview-item">
               <span>Current turn</span>
-              <strong>
-                {game.turn() === "w" ? "White" : "Black"}
-              </strong>
+              <strong>{game.turn() === "w" ? "White" : "Black"}</strong>
             </div>
           </div>
 
@@ -255,25 +256,19 @@ function App() {
 
             <div className="captured-row">
               <span>White captured</span>
-              <strong>
-                {capturedByWhite.join(" ") || "—"}
-              </strong>
+              <strong>{capturedByWhite.join(" ") || "—"}</strong>
             </div>
 
             <div className="captured-row">
               <span>Black captured</span>
-              <strong>
-                {capturedByBlack.join(" ") || "—"}
-              </strong>
+              <strong>{capturedByBlack.join(" ") || "—"}</strong>
             </div>
           </div>
 
           {/* Move History */}
           <div className="sidebar-card history-card">
             <h2>Move History</h2>
-            <p className="section-subtitle">
-              Your match moves
-            </p>
+            <p className="section-subtitle">Your match moves</p>
 
             <div className="history-header">
               <span>#</span>
@@ -288,26 +283,20 @@ function App() {
                   <div className="history-row" key={index}>
                     <span>{index + 1}</span>
                     <span>{moves[index * 2]?.san}</span>
-                    <span>
-                      {moves[index * 2 + 1]?.san || "..."}
-                    </span>
+                    <span>{moves[index * 2 + 1]?.san || "..."}</span>
                   </div>
-                )
+                ),
               )}
 
               {moves.length === 0 && (
-                <p className="empty-history">
-                  No moves played yet.
-                </p>
+                <p className="empty-history">No moves played yet.</p>
               )}
             </div>
           </div>
         </aside>
       </main>
 
-      <footer>
-        ChessArena © 2026 | Every move matters.
-      </footer>
+      <footer>ChessArena © 2026 | Every move matters.</footer>
     </div>
   );
 }
